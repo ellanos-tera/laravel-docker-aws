@@ -7,9 +7,8 @@ phases:
   pre_build: # commands to be run before build
     commands:
     - echo Logging in to Amazon ECR....
-    - aws --version
     # login to Elastic container registry
-    - eval $(aws ecr get-login --region us-east-1 --no-include-email | sed 's|https://||')
+    - $(aws ecr get-login --no-include-email --region us-east-1)
     - REPOSITORY_URI=662391642773.dkr.ecr.us-east-1.amazonaws.com/ellanos-tera/laravel-docker-aws
     - IMAGE_TAG=1.0
   build:
