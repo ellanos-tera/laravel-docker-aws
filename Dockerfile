@@ -17,9 +17,8 @@ RUN sed -s -i -e "s/443/8443/" /etc/apache2/ports.conf /etc/apache2/sites-availa
 
 WORKDIR /srv/app
 
-RUN docker-php-ext-install mbstring pdo pdo_mysql xdebug \
+RUN docker-php-ext-install mbstring pdo pdo_mysql \
  && a2enmod rewrite negotiation \
- && docker-php-ext-install opcache \
- && docker-php-ext-enable xdebug
+ && docker-php-ext-install opcache
 
 USER userapp
